@@ -20,4 +20,12 @@ class UsersProfileTest < ActionDispatch::IntegrationTest
     end
     assert_select 'div.pagination', count: 1
   end
+
+  test "stats display" do
+    get user_path(@user)
+    assert_select 'section.stats'
+    assert_select 'strong#following.stat'
+    assert_select 'strong#followers.stat'
+    # assert_select 'id'
+  end
 end
